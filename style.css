@@ -757,3 +757,25 @@ footer {
 .org-name {
   font-size: 16px;
 }
+.faq-item {
+  border-bottom: 1px solid #333;
+  overflow: hidden; /* This is the most important line to prevent overlap */
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  color: #aaa;
+  padding: 0 10px;
+}
+
+/* This class is added by JavaScript when you click */
+.faq-item.active .faq-a {
+  max-height: 500px; /* Allows the box to grow */
+  padding: 15px 10px; /* Gives the text some space */
+}
+
+.faq-item.active .faq-arrow {
+  transform: rotate(180deg);
+}
