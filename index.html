@@ -9,6 +9,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
   <link rel="icon" type="image/webp" href="stickers-1ea6ded3.webp" />
   <link href="./style.css" rel="stylesheet">
+  
+  
+  <style>
+  /* FAQ Toggle Logic */
+  .faq-item {
+    border-bottom: 1px solid #333;
+    overflow: hidden; /* Prevents text from leaking out */
+  }
+
+  .faq-a {
+    max-height: 0; /* Starts at zero height */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    color: #aaa;
+    padding: 0 10px; /* No vertical padding when closed */
+  }
+
+  .faq-item.active .faq-a {
+    max-height: 800px; /* High enough to fit all text */
+    padding: 15px 10px 25px 10px; /* Adds space when open */
+  }
+
+  .faq-item.active .faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 20px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Removed border-bottom here to prevent double lines */
+  }
+
+  .faq-arrow { 
+    transition: transform 0.3s; 
+  }
+</style>
 </head>
 <body>
 
@@ -19,7 +65,6 @@
   <ul class="nav-links">
     <li><a href="#overview">Overview</a></li>
     <li><a href="#agenda">Agenda</a></li>
-    <li><a href="#parents">Parents</a></li>
     <li><a href="#organizers">Organizers</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#rsvp" class="nav-cta btn">Register</a></li>
@@ -31,17 +76,17 @@
   <h1>Build Guild</h1>
   <div class="hero-subtitle">Bengaluru</div>
   <p>
-    The world's largest week of hardware meetups coming to the Silicon Valley of India.
-    Join the guild on <strong>April 18th.</strong>
+    The world's largest week of hardware meetups coming to your city.
+    Join the guild on <strong>April 14th.</strong>
   </p>
   <div class="hero-actions">
-    <a href="#rsvp" class="btn btn-primary">Join The Guild</a>
+    <a href="https://blueprint.hackclub.com/guilds/invite/bengaluru" target="_blank" class="btn btn-primary">Join The Guild</a>
     <a href="#overview" class="btn btn-outline">Learn more</a>
   </div>
   <div class="date-strip">
     <div class="date-cell">
-      <div class="date-cell-label">Event Date</div>
-      <div class="date-cell-value warn">April 18, 2025</div>
+      <div class="date-cell-label">Event Window</div>
+      <div class="date-cell-value warn">April 14</div>
     </div>
     <div class="date-cell">
       <div class="date-cell-label">Location</div>
@@ -58,23 +103,34 @@
   <div class="section-inner">
     <div class="section-label">Overview</div>
     <h2>Build Guild is Hack Club's<br>1-day hardware meetup!</h2>
-    <p class="section-lead">Running April 13th-19th in cities all around the world. Every guild is organized by a local Hack Clubber and funded by Hack Club HQ.</p>
+    <p class="section-lead">
+        Build Guild Bengaluru is a part of <strong>Hack Club Blueprint's Global Week</strong> of hardware meetups running from April 13th-19th. 
+        Every guild is organized by local Hack Clubbers and funded by Hack Club HQ!
+    </p>
     <div class="card-grid">
       <div class="ov-card">
         <span class="ov-icon wobble-1">Who?</span>
-        <p>Teenagers aged 13-18. No hardware experience needed—just a curiosity to build things.</p>
+        <p>Anyone can attend, no hardware experience needed. However you must be of 13 to 18 years of age.</p>
       </div>
       <div class="ov-card">
         <span class="ov-icon wobble-2">Where?</span>
-        <p>A safe, hardware-friendly venue in Bengaluru. Exact location revealed to registered builders.</p>
+        <p>Community spaces, makerspaces, schools, the organizer picks a safe, hardware-friendly venue.</p>
       </div>
       <div class="ov-card">
         <span class="ov-icon wobble-1">What?</span>
-        <p>Soldering sessions, PCB workshops, project demos, and lightning talks with fellow hackers.</p>
+        <p>Workshops, project demos, lightning talks, soldering sessions, and open build time. Every guild will have different events!</p>
       </div>
       <div class="ov-card">
-        <span class="ov-icon wobble-2">Cost?</span>
-        <p>100% Free. Hack Club covers food, venue, and basic hardware materials for all attendees.</p>
+        <span class="ov-icon wobble-2">How Much?</span>
+        <p>Completely free to attend. Hack Club funds per attendee to cover food, venue, and materials.</p>
+      </div>
+      <div class="ov-card">
+        <span class="ov-icon wobble-1">Global Week</span>
+        <p>100+ guilds running globally the same week. Same energy, same excitement, just different area.</p>
+      </div>
+      <div class="ov-card">
+        <span class="ov-icon wobble-2">Blueprint</span>
+        <p>Blueprint is Hack Club's hardware event made in collaboration with AMD!</p>
       </div>
     </div>
   </div>
@@ -82,90 +138,257 @@
 
 <section class="section darker" id="agenda">
   <div class="section-inner">
-    <div class="section-label">Schedule</div>
+    <div class="section-label">The Timeline</div>
     <h2>What's the plan?</h2>
-    <p class="section-lead">A day packed with building. Final schedule subject to minor tweaks!</p>
     <div class="agenda">
+      
       <div class="ag-item">
         <div class="ag-time">10:00 AM</div>
         <div class="ag-line"></div>
-        <div class="ag-body"><h4>Check-in & Kickoff</h4><p>Grab your badge, some stickers, and meet the crew.</p></div>
+        <div class="ag-body">
+          <h4>Registrations Open</h4>
+          <p>Doors open! Check-in, grab your ID cards, and settle in.</p>
+        </div>
       </div>
+
       <div class="ag-item">
         <div class="ag-time">11:00 AM</div>
         <div class="ag-line"></div>
-        <div class="ag-body"><h4>Hardware Workshops</h4><p>Intro to soldering and basic circuit building for beginners.</p></div>
+        <div class="ag-body">
+          <h4>Kickoff & Refreshments</h4>
+          <p>Official start of Build Guild Bengaluru with some light snacks.</p>
+        </div>
       </div>
-      <div class="ag-item">
-        <div class="ag-time">1:00 PM</div>
-        <div class="ag-line"></div>
-        <div class="ag-body"><h4>Lunch Break</h4><p>Pizza/Food provided by Hack Club. Great time for networking!</p></div>
-      </div>
-      <div class="ag-item">
-        <div class="ag-time">2:00 PM</div>
-        <div class="ag-line"></div>
-        <div class="ag-body"><h4>Open Build Time</h4><p>Work on your own projects or collaborate with others.</p></div>
-      </div>
-      <div class="ag-item">
-        <div class="ag-time">5:00 PM</div>
-        <div class="ag-line"></div>
-        <div class="ag-body"><h4>Demos & Wrap-up</h4><p>Show off what you built and see what others shipped!</p></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="section" id="parents">
-  <div class="section-inner">
-    <div class="section-label">For Parents</div>
-    <h2>Safety & Supervision</h2>
-    <p class="section-lead">Ensuring a safe and empowering environment for young makers.</p>
-    <div class="card-grid">
-      <div class="ov-card">
-        <strong>Supervision</strong>
-        <p>The event is run by experienced teen organizers with oversight from global Hack Club HQ staff. We follow a strict Code of Conduct.</p>
+      <div class="ag-item">
+        <div class="ag-time">11:30 AM</div>
+        <div class="ag-line"></div>
+        <div class="ag-body">
+          <h4>Speaker Insights</h4>
+          <p>Guest speaker sharing deep insights on hardware and cool tech stuff.</p>
+        </div>
       </div>
-      <div class="ov-card">
-        <strong>Hardware Safety</strong>
-        <p>All soldering and tool usage begins with a safety briefing. Organizers are on-site to assist students during technical sessions.</p>
-      </div>
-      <div class="ov-card">
-        <strong>Non-Profit Backing</strong>
-        <p>Build Guild is part of Hack Club, a global 501(c)(3) non-profit. Our mission is to provide technical education for free.</p>
-      </div>
-      <div class="ov-card">
-        <strong>Communication</strong>
-        <p>Registered attendees receive a dashboard with organizer contact info and exact venue details for easy drop-off/pick-up.</p>
-      </div>
-    </div>
 
-    <div style="margin-top: 3rem; background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 12px; border: 1px dashed #ec3750;">
-        <h3 style="margin-top:0;">Need to convince your parents?</h3>
-        <p>Copy and paste this email to them to explain what Build Guild is all about:</p>
-        <blockquote style="background: #111; padding: 15px; border-left: 4px solid #ec3750; font-size: 0.9rem; color: #ddd; line-height: 1.6;">
-            <strong>Subject:</strong> Invitation to Build Guild Bengaluru (Hardware Event)<br><br>
-            Hi Mom/Dad, I found a free 1-day hardware workshop in Bengaluru called Build Guild. It’s organized by Hack Club, a global non-profit for student makers. It’s a supervised event where I can learn electronics, soldering, and meet other students interested in engineering. They provide food and materials for free. You can find more details at https://hackclub.com/blueprint. Let me know if I can register!
-        </blockquote>
+      <div class="ag-item">
+        <div class="ag-time">12:30 PM</div>
+        <div class="ag-line"></div>
+        <div class="ag-body">
+          <h4>Build Time</h4>
+          <p>Hacking begins! Start working on your hardware projects.</p>
+        </div>
+      </div>
+
+      <div class="ag-item">
+        <div class="ag-time">01:00 PM</div>
+        <div class="ag-line"></div>
+        <div class="ag-body">
+          <h4>Lunch Break</h4>
+          <p>Refuel and network with fellow builders.</p>
+        </div>
+      </div>
+
+      <div class="ag-item">
+        <div class="ag-time">03:00 PM</div>
+        <div class="ag-line"></div>
+        <div class="ag-body">
+          <h4>Dumb Charades</h4>
+          <p>Hardware edition! A quick break for some fun and laughs.</p>
+        </div>
+      </div>
+
+      <div class="ag-item">
+        <div class="ag-time">04:00 PM</div>
+        <div class="ag-line"></div>
+        <div class="ag-body">
+          <h4>Rapid Fire</h4>
+          <p>High-speed tech trivia and hardware questions.</p>
+        </div>
+      </div>
+
+      <div class="ag-item">
+        <div class="ag-time">05:00 PM</div>
+        <div class="ag-line"></div>
+        <div class="ag-body">
+          <h4>Musical Chairs</h4>
+          <p>Classic hacker house energy—last person standing wins.</p>
+        </div>
+      </div>
+
+      <div class="ag-item">
+        <div class="ag-time">06:00 PM</div>
+        <div class="ag-line"></div>
+        <div class="ag-body">
+          <h4>Refreshments & Among Us</h4>
+          <p>Evening snacks and a live round of Among Us with the guild.</p>
+        </div>
+      </div>
+
+      <div class="ag-item">
+        <div class="ag-time">07:00 PM</div>
+        <div class="ag-line"></div>
+        <div class="ag-body">
+          <h4>Winner Announcements</h4>
+          <p>Prize distribution and closing ceremony. See you next time!</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <section class="section grid-bg" id="rsvp">
   <div class="section-inner">
-    <div class="section-label">Sign Up to Attend!</div>
+    <div class="section-label">Sign Up</div>
     <h2>Reserve your spot at<br>Build Guild Bengaluru</h2>
     <div class="rsvp-layout">
       <div class="rsvp-info">
         <h3>Join Bengaluru's Build Guild!</h3>
-        <p>Fill in the form and you'll have a dashboard with venue details and announcements!</p>
+        <p>Fill in the form and you'll have a dashboard with the venue details and announcements!</p>
         <div class="perks">
-          <div class="perk"><div class="perk-mark"></div>Free to attend</div>
+           <div class="perk"><div class="perk-mark"></div>Free to attend</div>
           <div class="perk"><div class="perk-mark"></div>Food provided on the day!</div>
           <div class="perk"><div class="perk-mark"></div>Explore other people's projects!</div>
+          <div class="perk"><div class="perk-mark"></div>Meet fellow hardware lovers and Hack Clubbers!</div>
           <div class="perk"><div class="perk-mark"></div>Part of a global Hack Club event</div>
         </div>
       </div>
       <div class="rsvp-box">
         <h3>Ready to join?</h3>
         <p>Click below to sign up for Build Guild Bengaluru, it takes less than a minute!</p>
-        <a href="https://blueprint.hackclub.com/guilds/invite/bengaluru" target="_blank" class="btn btn-primary" style="font-size:17px;padding:12px 36px;">Sign
+        <a href="https://blueprint.hackclub.com/guilds/invite/bengaluru" target="_blank" class="btn btn-primary" style="font-size:17px;padding:12px 36px;">Sign Up to Attend!</a>
+        <p class="rsvp-note">Build Guilds are for teenagers aged 13-18.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section darker" id="organizers">
+  <div class="section-inner">
+    <div class="section-label">Organizers</div>
+    <h2>Meet the team behind build guild bengaluru</h2>
+    <p class="section-lead">Reach out to us on the Hack Club Slack!</p>
+    
+    <div class="org-grid">
+      
+      <div class="org-card">
+        <div class="org-pfp">
+          <img src="shreyash.png" alt="Shreyash Sah" onerror="this.src='shreyash.png'"/>
+        </div>
+        <div>
+          <div class="org-name">Shreyash Sah</div>
+          <div class="org-post">Organizer</div>
+        </div>
+        <a href="https://hackclub.enterprise.slack.com/team/U0A1S4UDGNS" target="_blank" class="org-contact">Contact on Slack</a>
+      </div>
+
+      <div class="org-card">
+        <div class="org-pfp">
+          <img src="TS SHREELAYA.jpg" alt="TS Shreelaya" onerror="this.src='homepage_logo-3585630b.webp'"/>
+        </div>
+        <div>
+          <div class="org-name">TS Sreelaya</div>
+          <div class="org-post">Organizer</div>
+        </div>
+        <a href="https://hackclub.enterprise.slack.com/team/U0A1MTJDESX" target="_blank" class="org-contact">Contact on Slack</a>
+      </div>
+
+      <div class="org-card">
+        <div class="org-pfp">
+          <img src="organizer3.jpg" alt="Satwik Bhusanur" onerror="this.src='homepage_logo-3585630b.webp'"/>
+        </div>
+        <div>
+          <div class="org-name">Satwik Bhusanur</div>
+          <div class="org-post">Organizer</div>
+        </div>
+        <a href="SLACK_LINK_HERE" target="_blank" class="org-contact">Contact on Slack</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <section class="section darker" id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2>Common questions</h2>
+    <p class="section-lead">Still curious? Jump into the Hack Club Slack <strong style="color:var(--bp-warning)">#build-guild-bengaluru</strong></p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is Build Guild? <span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>Build Guild is a 1-day hardware meetup organized as part of Hack Club Blueprint's global Build Guilds week (April 13-19). It's free and Hack Club funds the event it is and open to anyone who wants to build hardware, attend workshops, demo projects, and meet their community!                                     </p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is it really free? <span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>Yes, 100% free! Hack Club funds us per attendee. You pay nothing.                                                                       </p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need hardware or coding experience? <span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>Not at all! Build Guilds is open to complete beginners and experienced makers who've shipped multiple projects! We have beginner workshops and open build time for those with their own projects.                                                              </p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Who can attend? <span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>Anyone can attend the event aged 13-18. You don't need to be a Hack Club member                                   .</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Where is the venue? <span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>The venue is to be decided!                                                        </p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What should I bring? <span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>A laptop if you have one (not required, but highly advised), a mobile phone is necessary. Any hardware projects you want to demo or get feedback on(HIGHLY RECOMMENDED).Some basic tools like soldering irons, multimeters, breadboards since we will be having tournaments!                                                            </p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What about Parental Guide?                               <span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>To be given!                              </p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What is Hack Club Blueprint? <span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>Hack Club Blueprint is a program by <a href="https://hackclub.com" target="_blank">Hack Club</a> a nonprofit with 50,000+ teen makers. Blueprint gives teens the parts and guidance to build hardware projects, and grants up to $400 USD for advanced builds. <a href="https://blueprint.hackclub.com" target="_blank">Learn more</a></p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<div class="slack-banner">
+  <a href="https://hackclub.com/slack?channel=build-guild-bengaluru" target="_blank" class="slack-btn">
+    Join #build-guild-bengaluru on Slack
+  </a>
+</div>
+
+<footer>
+  <div class="ft-logo">Build Guild <span>Bengaluru</span></div>
+  <p class="ft-sub">A Hack Club Blueprint event, April 14, 2026, Bengaluru, KA</p>
+  <div class="ft-links">
+    <a href="https://hackclub.com" target="_blank">Hack Club</a>
+    <a href="https://blueprint.hackclub.com" target="_blank">Blueprint</a>
+    <a href="https://hackclub.com/slack" target="_blank">Join Slack</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</footer>
+
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    item.classList.toggle('active');
+  }
+</script>
+</body>
+</html>
+
